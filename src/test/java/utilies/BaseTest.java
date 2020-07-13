@@ -15,11 +15,6 @@ public class BaseTest {
 
     private WebDriver driver;
 
-
-
-
-
-    /*stage 5*/
     public WebDriver createDriver(String browserType, String executionType){
 
         if(executionType.equals("local")){

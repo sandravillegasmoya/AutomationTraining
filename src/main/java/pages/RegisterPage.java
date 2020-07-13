@@ -33,17 +33,120 @@ public class RegisterPage extends BasePage {
         super(driver);
     }
 
+    public WebElement getRegistrerLink()
+    {
+        return findElement(registrerLink);
+    }
 
+    public WebElement getRegisterTitle()
+    {
+        return findElement(registerTitle);
+    }
+
+    public WebElement getFirsNameField()
+    {
+        return findElement(firsNameField);
+    }
+
+    public WebElement getLastNameField()
+    {
+        return findElement(lastNameField);
+    }
+
+    public WebElement getEmailField()
+    {
+        return findElement(emailField);
+    }
+
+    public WebElement getUserNameField()
+    {
+        return findElement(userNameField);
+    }
+
+    public WebElement getConfirmPasswordField()
+    {
+        return findElement(confirmPasswordField);
+    }
+
+    public WebElement getSecurityQuestionField()
+    {
+        return findElement(securityQuestionField);
+    }
+
+    public WebElement getSecurityAnswerField()
+    {
+        return findElement(securityAnswerField);
+    }
+
+    public WebElement getPasswordField()
+    {
+        return findElement(passwordField);
+    }
+
+    public WebElement getStepNextButton()
+    {
+        return findElement(stepNextButton);
+    }
+
+    public WebElement getFirtsNameRequiredMessage()
+    {
+        return findElement(firtsNameRequiredMessage);
+    }
+
+    public WebElement getLastNameRequiredMessage()
+    {
+        return findElement(lastNameRequiredMessage);
+    }
+
+    public WebElement getEmailRequiredMessage()
+    {
+        return findElement(emailRequiredMessage);
+    }
+
+    public WebElement getUserNameRequiredMessage()
+    {
+        return findElement(userNameRequiredMessage);
+    }
+
+    public WebElement getPasswordRequiredMessage()
+    {
+        return findElement(passwordRequiredMessage);
+    }
+
+    public WebElement getSecurityQuestionRequiredMessage()
+    {
+        return findElement(securityQuestionRequiredMessage);
+    }
+
+    public WebElement getSecurityAnswerRequiredMessage()
+    {
+        return findElement(securityAnswerRequiredMessage);
+    }
+
+    public WebElement getAlreadyExistUserMessage()
+    {
+        return findElement(alreadyExistUserMessage);
+    }
+
+    public WebElement getConfirmPasswordRequiredMessage()
+    {
+        return findElement(confirmPasswordRequiredMessage);
+    }
+
+    public WebElement getPasswordsDoNotMatchMessage()
+    {
+        return findElement(PasswordsDoNotMatchMessage);
+    }
 
     public void clearElementsRegisterPage(){
-        clearElemnt(getConfirmPasswordField());
-        clearElemnt(getEmailField());
-        clearElemnt(getFirsNameField());
-        clearElemnt(getLastNameField());
-        clearElemnt(getSecurityQuestionField());
-        clearElemnt(getSecurityAnswerField());
-        clearElemnt(getUserNameField());
-        clearElemnt(getPasswordField());
+        clearElement(getConfirmPasswordField());
+        clearElement(getEmailField());
+        clearElement(getFirsNameField());
+        clearElement(getLastNameField());
+        clearElement(getSecurityQuestionField());
+        clearElement(getSecurityAnswerField());
+        clearElement(getUserNameField());
+        clearElement(getPasswordField());
     }
 
 

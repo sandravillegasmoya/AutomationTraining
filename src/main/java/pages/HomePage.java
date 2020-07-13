@@ -10,7 +10,6 @@ public class HomePage extends BasePage{
 
     public HomePage(WebDriver otherDriver) {
         super(otherDriver);
-
     }
 
 
