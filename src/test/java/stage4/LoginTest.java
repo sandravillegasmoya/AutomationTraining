@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
-import pages.HomePage;
 import pages.LoginPage;
 
 import static org.testng.Assert.assertTrue;
@@ -17,7 +16,6 @@ public class LoginTest {
     private StringBuffer verificationErrors = new StringBuffer();
     private LoginPage loginPage ;
     private WebElement buttonLogin;
-    private HomePage homePage;
 
     @BeforeMethod (alwaysRun = true)
     public void setUp() throws Exception {
@@ -25,9 +23,7 @@ public class LoginTest {
         System.setProperty("webdriver.chrome.driver", "C:/Automation/Drivers/chrome/chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("http://qa-trainingw7:86/");
-        homePage = New HomePage(driver);
-
-        /*loginPage = new LoginPage(driver);*/
+        loginPage = new LoginPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -60,31 +56,30 @@ public class LoginTest {
     @Test
     public void testVerifyLoginPageIsDisplayed() throws Exception {
         driver.get("http://qa-trainingw7:86/");
-        loginPage =
-        loginPage.clickOnElemnt(loginPage.getLoginLink());
+        loginPage.clickOnElement(loginPage.getLoginLink());
         assertTrue(loginPage.isElementPresent(loginPage.getLoginTitlePage()));
     }
 
     @Test
     public void testVerifyLoginValidCredentials() throws Exception {
         driver.get("http://qa-trainingw7:86/");
-        loginPage.clickOnElemnt(loginPage.getLoginLink());
+        loginPage.clickOnElement(loginPage.getLoginLink());
         loginPage.clearElementsLoginPage();
         loginPage.typeOnElement(loginPage.getUsername(),"svillegas1" );
         loginPage.typeOnElement(loginPage.getPassword(),"!123Test");
-        loginPage.clickOnElemnt(loginPage.getLoginButton());
+        loginPage.clickOnElement(loginPage.getLoginButton());
         assertTrue(loginPage.isElementPresent(loginPage.getMemberName()));
     }
 
     @Test
     public void testVerifyLoginInvalidCredentials() throws Exception {
         driver.get("http://qa-trainingw7:86/");
-        loginPage.clickOnElemnt(loginPage.getLoginLink());
+        loginPage.clickOnElement(loginPage.getLoginLink());
         loginPage.clearElementsLoginPage();
         loginPage.clearElementsLoginPage();
         loginPage.typeOnElement(loginPage.getUsername(),"TestSandra" );
         loginPage.typeOnElement(loginPage.getPassword(),"invalidPass");
-        loginPage.clickOnElemnt(loginPage.getLoginButton());
+        loginPage.clickOnElement(loginPage.getLoginButton());
         assertTrue(loginPage.isElementPresent(loginPage.getInvalidLoginMessage()));
 
     }

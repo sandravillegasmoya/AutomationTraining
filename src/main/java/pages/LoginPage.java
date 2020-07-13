@@ -7,7 +7,7 @@ import pages.utilities.BasePage;
 
 public class LoginPage extends BasePage {
 
-
+    private By loginLink = By.id("ctl00_LoginView_LoginLink");
     private By loginTitlePage = By.xpath("//h2[contains(.,'Login')]");
     private By username = By.id("ctl00_Main_LoginConrol_UserName");
     private By password = By.id("ctl00_Main_LoginConrol_Password");
@@ -20,13 +20,44 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void login(){
+    public WebElement getLoginTitlePage()
+    {
+        return findElement(loginTitlePage);
+    }
 
+    public WebElement getLoginLink()
+    {
+        return findElement(loginLink);
+    }
+
+    public WebElement getUsername()
+    {
+        return findElement(username);
+    }
+
+    public WebElement getPassword()
+    {
+        return findElement(password);
+    }
+
+    public WebElement getLoginButton()
+    {
+        return findElement(loginButton);
+    }
+
+    public WebElement getMemberName()
+    {
+        return findElement(memberName);
+    }
+
+    public WebElement getInvalidLoginMessage()
+    {
+        return findElement(notSuccessLoginMessage);
     }
 
     public void clearElementsLoginPage(){
-        clearElemnt(getUsername());
-        clearElemnt(getPassword());
+        clearElement(getUsername());
+        clearElement(getPassword());
     }
 
 }
