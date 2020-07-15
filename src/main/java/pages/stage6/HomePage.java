@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.stage6.utilities.BasePage;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
     @FindBy(id = "ctl00_LoginView_LoginLink")
@@ -24,170 +26,52 @@ public class HomePage extends BasePage {
     WebElement postAnAdTab;
     @FindBy(id = "ctl00_LoginView_MemberName")
     WebElement memberName;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl00_TopCategoryButton")
-    WebElement antiquesCollectiblesCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl01_TopCategoryButton")
-    WebElement artsCraftsCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl01_NestedSubCategoryRepeater_ctl01_SubCategoryButton")
-    WebElement personalArtsCraftsSubCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl02_TopCategoryButton")
-    WebElement autoCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl02_NestedSubCategoryRepeater_ctl01_SubCategoryButton")
-    WebElement hondaAutoSubCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl02_NestedSubCategoryRepeater_ctl02_SubCategoryButton")
-    WebElement nissanAutoSubCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl02_NestedSubCategoryRepeater_ctl03_SubCategoryButton")
-    WebElement toyotaAutoSubCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl03_TopCategoryButton")
-    WebElement electronicsCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl04_TopCategoryButton")
-    WebElement gardenCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl05_TopCategoryButton")
-    WebElement homeCategoryLink;
-    @FindBy(id = "ctl00_Main_CategoryBrowser_TopCategoryList_ctl06_TopCategoryButton")
-    WebElement musicCategoryLink;
+
+    RegisterPage registerPage;
+    LoginPage loginPage;
+
+    @FindBy (xpath = "//td//h4")
+    private List<WebElement> categoriesList;
 
     public HomePage(WebDriver otherDriver) {
         super(otherDriver);
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getRegistrerLinkElement()
-    {
-        return registrerLink;
-    }
-
-    public WebElement getLoginLinkElement()
-    {
-        return loginLink;
-    }
-
-    public WebElement getLogoutLinkElement()
-    {
-        return logoutLink;
-    }
-
-    public WebElement getBrowseAllCategoriesLinkElement()
-    {
-        return browseAllCategoriesLink;
-    }
-
-    public WebElement getHomeTabElement()
-    {
-        return homeTab;
-    }
-
-    public WebElement getMyAdsProfileTabElement()
-    {
-        return myAdsProfileTab;
-    }
-
-    public WebElement getPostAnAdTabElement()
-    {
-        return postAnAdTab;
-    }
-
-    public WebElement getAntiquesCollectiblesCategoryLinkElement()
-    {
-        return antiquesCollectiblesCategoryLink;
-    }
-
-    public WebElement getArtsCraftsCategoryLinkElement()
-    {
-        return artsCraftsCategoryLink;
-    }
-
-    public WebElement getPersonalArtsCraftsSubCategoryLinkElement()
-    {
-        return personalArtsCraftsSubCategoryLink;
-    }
-
-    public WebElement getAutoCategoryLinkElement()
-    {
-        return autoCategoryLink;
-    }
-
-    public WebElement getHondaAutoSubCategoryLinkElement()
-    {
-        return hondaAutoSubCategoryLink;
-    }
-
-    public WebElement getNissanAutoSubCategoryLinkElement()
-    {
-        return nissanAutoSubCategoryLink;
-    }
-
-    public WebElement getToyotaAutoSubCategoryLinkElement()
-    {
-        return toyotaAutoSubCategoryLink;
-    }
-
-    public WebElement getElectronicsCategoryLinkElement()
-    {
-        return electronicsCategoryLink;
-    }
-
-    public WebElement getGardenCategoryLinkElement()
-    {
-        return gardenCategoryLink;
-    }
-
-    public WebElement getHomeCategoryLinkElement()
-    {
-        return homeCategoryLink;
-    }
-
-    public WebElement getMusicCategoryLinkElement()
-    {
-        return musicCategoryLink;
-    }
-
-    public WebElement getMemberNameElement()
-    {
-        return memberName;
-    }
-
-    //    eliminar isElementDisplayed
-    //      verificar que se presentan los elementos escenciales de la pag home
-    //          verificar hometab
     public boolean verifyLoads(String userName){
-        boolean isLoad=false;
-        if(isElementDisplayed(getHomeTabElement()) &&
-                isElementDisplayed(getPostAnAdTabElement()) &&
-                isElementDisplayed(getMyAdsProfileTabElement())){
-            if(isUserLogedIn(userName)){
-                if(isElementDisplayed(getLogoutLinkElement())){
-                    isLoad=true;
-                }
-            }else{
-                if(isElementDisplayed(getLoginLinkElement())){
-                    isLoad=true;
-                }
-            }
+        boolean displayed= false;
+        for(WebElement category : categoriesList){
+            if(isElementDisplayed(category)){
+                displayed = true;
+            }else return false;
         }
-        return isLoad;
+        return displayed;
     }
 
     public boolean isUserLogedIn(String userName){
 
-        if(isElementDisplayed(getMemberNameElement())){
-            if(userName.equals(getTextFromElement(getMemberNameElement()))) {
-                return true;
-            }
+        if(isElementDisplayed(memberName)){
+            return(userName.equals(getTextFromElement(memberName)));
         }
         return false;
     }
 
-    public void goToHomePage(){
-        clickOnElemnt(getHomeTabElement());
+    public LoginPage goToLogin(){
+        clickOnElement(loginLink);
+        return loginPage = new LoginPage(driver);
     }
 
     public void goToPostAnAd(){
-        clickOnElemnt(getPostAnAdTabElement());
+        clickOnElement(postAnAdTab);
     }
 
     public void goToMyAdsProfile(){
-        clickOnElemnt(getMyAdsProfileTabElement());
+        clickOnElement(myAdsProfileTab);
+    }
+
+    public RegisterPage goToRegister(){
+        clickOnElement(registrerLink);
+        return registerPage = new RegisterPage(driver);
     }
 
 }

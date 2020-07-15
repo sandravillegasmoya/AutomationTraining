@@ -52,16 +52,16 @@ public class RegisterTest extends BaseTest {
     @Test
     public void testVerifyRegistrerLink() throws Exception {
        driver.get("http://qa-trainingw7:86/");
-        registerPage.clickOnElemnt(registerPage.getRegistrerLink());
+        registerPage.clickOnElement(registerPage.getRegistrerLink());
        assertTrue(registerPage.isElementPresent(registerPage.getRegisterTitle()));
     }
 
     @Test
     public void testValidateMandatoryMessages() throws Exception {
         driver.get("http://qa-trainingw7:86/");
-        registerPage.clickOnElemnt(registerPage.getRegistrerLink());
+        registerPage.clickOnElement(registerPage.getRegistrerLink());
         registerPage.clearElementsRegisterPage();
-        registerPage.clickOnElemnt(registerPage.getStepNextButton());
+        registerPage.clickOnElement(registerPage.getStepNextButton());
         assertTrue(registerPage.isElementDisplayed(registerPage.getFirtsNameRequiredMessage()));
         assertTrue(registerPage.isElementDisplayed(registerPage.getLastNameRequiredMessage()));
         assertTrue(registerPage.isElementDisplayed(registerPage.getEmailRequiredMessage()));
@@ -75,7 +75,7 @@ public class RegisterTest extends BaseTest {
     @Test
     public void testVerifyUserNameAlreadyTaken() throws Exception {
         driver.get("http://qa-trainingw7:86/");
-        registerPage.clickOnElemnt(registerPage.getRegistrerLink());
+        registerPage.clickOnElement(registerPage.getRegistrerLink());
         registerPage.clearElementsRegisterPage();
         registerPage.typeOnElement(registerPage.getFirsNameField(),"Sandra");
         registerPage.typeOnElement(registerPage.getLastNameField(),"Villegas");
@@ -85,14 +85,14 @@ public class RegisterTest extends BaseTest {
         registerPage.typeOnElement(registerPage.getConfirmPasswordField(),"!123Test");
         registerPage.typeOnElement(registerPage.getSecurityQuestionField(),"test");
         registerPage.typeOnElement(registerPage.getSecurityAnswerField(),"test");
-        registerPage.clickOnElemnt(registerPage.getStepNextButton());
+        registerPage.clickOnElement(registerPage.getStepNextButton());
         assertTrue(registerPage.isElementDisplayed(registerPage.getAlreadyExistUserMessage()));
     }
 
     @Test
     public void testVerifyMismatchedPasswords() throws Exception {
         driver.get("http://qa-trainingw7:86/");
-        registerPage.clickOnElemnt(registerPage.getRegistrerLink());
+        registerPage.clickOnElement(registerPage.getRegistrerLink());
         registerPage.clearElementsRegisterPage();
         registerPage.typeOnElement(registerPage.getFirsNameField(),"Sandra");
         registerPage.typeOnElement(registerPage.getLastNameField(),"Villegas");
@@ -102,7 +102,7 @@ public class RegisterTest extends BaseTest {
         registerPage.typeOnElement(registerPage.getConfirmPasswordField(),"!123Ttst");
         registerPage.typeOnElement(registerPage.getSecurityQuestionField(),"test");
         registerPage.typeOnElement(registerPage.getSecurityAnswerField(),"test");
-        registerPage.clickOnElemnt(registerPage.getStepNextButton());
+        registerPage.clickOnElement(registerPage.getStepNextButton());
         assertTrue(registerPage.isElementDisplayed(registerPage.getPasswordsDoNotMatchMessage()));
    }
 

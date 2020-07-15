@@ -18,33 +18,62 @@ public class BasePage {
     }
 
     public WebElement findElement(By by){
-        if(waitForElementEnabled(by))
-            return driver.findElement(by);
-        else
+        try{
+            if(waitForElementEnabled(by))
+                return driver.findElement(by);
+            else
+                return null;
+        }catch (NoSuchElementException e) {
             return null;
+        }
     }
 
-    public void typeOnElement(WebElement element, String data){
-        element.sendKeys(data);
+    public boolean typeOnElement(WebElement element, String data){
+        try{
+            if(waitForElementVisible(element)){
+                element.sendKeys(data);
+                return true;}
+        }catch (NoSuchElementException e) {
+            return false;
+        }
+        return false;
     }
 
-    public void clickOnElemnt(WebElement element){
-        element.click();
+    public boolean clickOnElement(WebElement element){
+        try{
+            if(waitForElementVisible(element)){
+                element.click();
+                return true;}
+        }catch (NoSuchElementException e) {
+            return false;
+        }
+        return false;
     }
 
-    public void clearElemnt(WebElement element){
-        element.clear();
+    public boolean clearElement(WebElement element){
+        try{
+            if(waitForElementVisible(element)){
+                element.clear();
+                return true;}
+        }catch (NoSuchElementException e) {
+            return false;
+        }
+        return false;
     }
 
-    public String getTextFromElement(WebElement element)
-    {
-        return element.getText();
+    public String getTextFromElement(WebElement element){
+        try{
+            if(waitForElementVisible(element)){
+                return element.getText();}
+        }catch (NoSuchElementException e) {
+            return null;
+        }
+        return null;
     }
 
     public boolean isElementPresent(WebElement element) {
-
         try {
-            if(element.isDisplayed())
+            if(element.isEnabled() && element.isDisplayed())
                 return true;
             else
                 return false;
@@ -58,9 +87,7 @@ public class BasePage {
         try{
             if(waitForElementVisible(element))
             {
-                if(element.isDisplayed()) {
-                    isDisplayed = true;
-                }
+                isDisplayed = true;
             }
         }
         catch (NoSuchElementException e)

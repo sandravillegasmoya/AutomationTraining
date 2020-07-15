@@ -24,13 +24,13 @@ public class LoginPage extends BasePage {
     @FindBy(id = "ctl00_TopMenuRepeater_ctl01_MenuLink")
     WebElement postAnAdTab;
     @FindBy(id = "ctl00_LoginView_MemberName")
-    WebElement memberName;
+    WebElement memberNameLabel;
     @FindBy(xpath="//div[@id='col_main_right']/h2[@class='section']")
     WebElement loginTitlePage;
     @FindBy(id="ctl00_Main_LoginConrol_UserName")
-    WebElement username;
+    WebElement usernameField;
     @FindBy(id="ctl00_Main_LoginConrol_Password")
-    WebElement password;
+    WebElement passwordField;
     @FindBy(id="ctl00_Main_LoginConrol_LoginButton")
     WebElement loginButton;
     @FindBy(id="//td[contains(.,'Your login attempt was not successful. Please try again.') and contains(@style,'Red')]")
@@ -42,130 +42,56 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getLoginTitlePageElement()
-    {
-        return loginTitlePage;
-    }
-
-    public WebElement getUsernameElement()
-    {
-        return username;
-    }
-
-    public WebElement getPasswordElement()
-    {
-        return password;
-    }
-
-    public WebElement getLoginButtonElement()
-    {
-        return loginButton;
-    }
-
-    public WebElement getInvalidLoginMessageElement()
-    {
-        return notSuccessLoginMessage;
-    }
-
-    public WebElement getRegistrerLinkElement()
-    {
-        return registrerLink;
-    }
-
-    public WebElement getHomeTabElement()
-    {
-        return homeTab;
-    }
-
-    public WebElement getMyAdsProfileTabElement()
-    {
-        return myAdsProfileTab;
-    }
-
-    public WebElement getPostAnAdTabElement()
-    {
-        return postAnAdTab;
-    }
-
-    public WebElement getLoginLinkElement()
-    {
-        return loginLink;
-    }
-
-    public WebElement getLogoutLinkElement()
-    {
-        return logoutLink;
-    }
-
-    public WebElement getMemberNameElement()
-    {
-        return memberName;
-    }
-
     public void clearElementsLoginPage(){
-        clearElemnt(getUsernameElement());
-        clearElemnt(getPasswordElement());
+        clearElement(usernameField);
+        clearElement(passwordField);
     }
 
     public boolean isUserLogedIn(String userName){
-
-        if(isElementDisplayed(getMemberNameElement())){
-            if(userName.equals(getTextFromElement(getMemberNameElement()))) {
-                return true;
-            }
+        if(isElementDisplayed(memberNameLabel)){
+            return(userName.equals(getTextFromElement(memberNameLabel)));
         }
-
         return false;
     }
 
-    public boolean verifyLoads(String userName){
-        boolean isLoad=false;
-        if(isElementDisplayed(getHomeTabElement()) &&
-                isElementDisplayed(getPostAnAdTabElement()) &&
-                isElementDisplayed(getMyAdsProfileTabElement()) &&
-                isElementDisplayed(getUsernameElement()) &&
-                isElementDisplayed(getPasswordElement()) &&
-                isElementDisplayed(getLoginButtonElement())){
-                isLoad=true;
-        }
-        return isLoad;
+    public boolean verifyLoads(){
+        return(isElementDisplayed(usernameField) &&
+                isElementDisplayed(passwordField) &&
+                isElementDisplayed(loginButton));
     }
 
     public void goToHomePage(){
-        clickOnElemnt(getHomeTabElement());
+        clickOnElement(homeTab);
     }
 
     public void goToPostAnAd(){
-        clickOnElemnt(getPostAnAdTabElement());
+        clickOnElement(postAnAdTab);
     }
 
     public void goToMyAdsProfile(){
-        clickOnElemnt(getMyAdsProfileTabElement());
+        clickOnElement(myAdsProfileTab);
+    }
+
+    public void goToRegister(){
+        clickOnElement(registrerLink);
     }
 
     public HomePage logIn(String userName, String password){
 
         clearElementsLoginPage();
-        typeOnElement(getUsernameElement(),userName );
-        typeOnElement(getPasswordElement(),password);
-        clickOnElemnt(getLoginButtonElement());
+        typeOnElement(usernameField,userName );
+        typeOnElement(passwordField,password);
+        clickOnElement(loginButton);
 
         return new HomePage(driver);
     }
 
-    public boolean verifyErrorMessage(String message)
+    public boolean verifyMessage(String message)
     {
         By messageElement = By.xpath("//td[contains(.,'"+message+"') and contains(@style,'Red')]");
-        if(findElement(messageElement).isDisplayed()) {
-            return true;
-        }
-        return false;
+        return(findElement(messageElement).isDisplayed());
     }
 
-    public void goToLogin(){
-        clickOnElemnt(getLoginLinkElement());
-    }
 
-    public void goToRegister(){ clickOnElemnt(getRegistrerLinkElement());}
 
 }

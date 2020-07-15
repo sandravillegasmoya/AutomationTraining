@@ -30,8 +30,8 @@ public class BasePage {
     public boolean typeOnElement(WebElement element, String data){
         try{
             if(waitForElementVisible(element)){
-            element.sendKeys(data);
-            return true;}
+                element.sendKeys(data);
+                return true;}
         }catch (NoSuchElementException e) {
             return false;
         }
