@@ -54,14 +54,12 @@ public class PostAnAdTest extends BaseTest{
 
     @Test
     public void testVerifyPostanAdTabUserNotLogged() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         homePage.navigation.goToPostAnAd();
         assertTrue(loginPage.isElementDisplayed(loginPage.getLoginTitlePageElement()));
     }
 
     @Test
     public void testVerifyPostanAdTabUserAlreadyLogged() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         homePage.navigation.goToPostAnAd();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");

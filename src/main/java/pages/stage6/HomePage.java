@@ -27,6 +27,7 @@ public class HomePage extends BasePage {
     @FindBy(id = "ctl00_LoginView_MemberName")
     WebElement memberName;
 
+
     RegisterPage registerPage;
     LoginPage loginPage;
 

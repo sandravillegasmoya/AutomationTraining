@@ -80,7 +80,6 @@ public class RegisterPage extends BasePage {
     }
 
     public boolean verifyLoads(){
-
         return(isElementDisplayed(firsNameField) &&
                 isElementDisplayed(lastNameField) &&
                 isElementDisplayed(emailField) &&
@@ -89,7 +88,6 @@ public class RegisterPage extends BasePage {
                 isElementDisplayed(securityAnswerField) &&
                 isElementDisplayed(securityQuestionField) &&
                 isElementDisplayed(stepNextButton));
-
     }
 
     public void goToHomePage(){

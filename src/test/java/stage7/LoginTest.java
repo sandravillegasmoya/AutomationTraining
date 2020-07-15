@@ -51,14 +51,12 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testVerifyLoginPageIsDisplayed() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         loginPage = homePage.navigation.goToLogin();
         assertTrue(loginPage.isElementPresent(loginPage.getLoginTitlePageElement()));
     }
 
     @Test
     public void testVerifyLoginValidCredentials() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         loginPage = homePage.navigation.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");
@@ -67,7 +65,6 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testVerifyLoginInvalidCredentials() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         loginPage = homePage.navigation.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","invalidPass");

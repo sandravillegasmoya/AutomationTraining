@@ -50,21 +50,18 @@ public class BrowseCategoriesTest extends BaseTest{
 
     @Test
     public void testSearchViewAntiquesCollectibles() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         browseCategoriesPage = homePage.goToBrowseCategories(homePage.getAntiquesCollectiblesCategoryLinkElement());
         assertEquals(browseCategoriesPage.getOptionSelected(browseCategoriesPage.getCategoryDropDown()), " Antiques & Collectibles");
     }
 
     @Test
     public void testSearchViewAuto() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         browseCategoriesPage = homePage.goToBrowseCategories(homePage.getAutoCategoryLinkElement());
         assertEquals(browseCategoriesPage.getOptionSelected(browseCategoriesPage.getCategoryDropDown()), " Auto");
     }
 
     @Test
     public void testSearchViewArtsCrafts() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         browseCategoriesPage = homePage.goToBrowseCategories(homePage.getArtsCraftsCategoryLinkElement());
         assertEquals(browseCategoriesPage.getOptionSelected(browseCategoriesPage.getCategoryDropDown()), " Arts & Crafts");
     }
