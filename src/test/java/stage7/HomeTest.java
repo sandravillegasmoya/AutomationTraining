@@ -48,13 +48,11 @@ public class HomeTest extends BaseTest {
 
     @Test
     public void testVerifyHomePageLoadingApp() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         assertTrue(homePage.verifyLoads(driver, homePage.getBrowseCategoriesTitle()));
     }
 
     @Test
     public void testVerifyHomePageNavMenu() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         homePage = homePage.navigation.goToHomePage();
         assertTrue(homePage.verifyLoads(driver, homePage.getBrowseCategoriesTitle()));
 
