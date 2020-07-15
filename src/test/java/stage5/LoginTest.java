@@ -54,31 +54,28 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testVerifyLoginPageIsDisplayed() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
-        loginPage.clickOnElemnt(loginPage.getLoginLink());
+        loginPage.clickOnElement(loginPage.getLoginLink());
         assertTrue(loginPage.isElementPresent(loginPage.getLoginTitlePage()));
     }
 
     @Test
     public void testVerifyLoginValidCredentials() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
-        loginPage.clickOnElemnt(loginPage.getLoginLink());
+        loginPage.clickOnElement(loginPage.getLoginLink());
         loginPage.clearElementsLoginPage();
         loginPage.typeOnElement(loginPage.getUsername(),"svillegas1" );
         loginPage.typeOnElement(loginPage.getPassword(),"!123Test");
-        loginPage.clickOnElemnt(loginPage.getLoginButton());
+        loginPage.clickOnElement(loginPage.getLoginButton());
         assertTrue(loginPage.isElementPresent(loginPage.getMemberName()));
     }
 
     @Test
     public void testVerifyLoginInvalidCredentials() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
-        loginPage.clickOnElemnt(loginPage.getLoginLink());
+        loginPage.clickOnElement(loginPage.getLoginLink());
         loginPage.clearElementsLoginPage();
         loginPage.clearElementsLoginPage();
         loginPage.typeOnElement(loginPage.getUsername(),"svillegas1" );
         loginPage.typeOnElement(loginPage.getPassword(),"invalidPass");
-        loginPage.clickOnElemnt(loginPage.getLoginButton());
+        loginPage.clickOnElement(loginPage.getLoginButton());
         assertTrue(loginPage.isElementPresent(loginPage.getInvalidLoginMessage()));
 
     }

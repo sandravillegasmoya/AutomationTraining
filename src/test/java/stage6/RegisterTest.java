@@ -59,7 +59,6 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void testValidateMandatoryMessages() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         registerPage.goToRegister();
         registerPage.clearElementsRegisterPage();
         registerPage.clickOnElemnt(registerPage.getStepNextButtonElement());
@@ -75,7 +74,6 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void testVerifyUserNameAlreadyTaken() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         registerPage.goToRegister();
         registerPage.clearElementsRegisterPage();
         registerPage.typeOnElement(registerPage.getFirsNameFieldElement(),"Sandra");
@@ -92,7 +90,6 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void testVerifyMismatchedPasswords() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         registerPage.clickOnElemnt(registerPage.getRegistrerLinkElement());
         registerPage.clearElementsRegisterPage();
         registerPage.typeOnElement(registerPage.getFirsNameFieldElement(),"Sandra");

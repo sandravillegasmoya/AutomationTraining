@@ -51,56 +51,6 @@ public class RegisterPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getRegisterTitleElement()
-    {
-        return registerTitle;
-    }
-
-    public WebElement getFirsNameFieldElement()
-    {
-        return firsNameField;
-    }
-
-    public WebElement getLastNameFieldElement()
-    {
-        return lastNameField;
-    }
-
-    public WebElement getEmailFieldElement()
-    {
-        return emailField;
-    }
-
-    public WebElement getUserNameFieldElement()
-    {
-        return userNameField;
-    }
-
-    public WebElement getConfirmPasswordFieldElement()
-    {
-        return confirmPasswordField;
-    }
-
-    public WebElement getSecurityQuestionFieldElement()
-    {
-        return securityQuestionField;
-    }
-
-    public WebElement getSecurityAnswerFieldElement()
-    {
-        return securityAnswerField;
-    }
-
-    public WebElement getPasswordFieldElement()
-    {
-        return passwordField;
-    }
-
-    public WebElement getStepNextButtonElement()
-    {
-        return stepNextButton;
-    }
-
     public void clearElementsRegisterPage(){
         clearElemnt(getConfirmPasswordFieldElement());
         clearElemnt(getEmailFieldElement());
@@ -119,41 +69,6 @@ public class RegisterPage extends BasePage {
             return true;
         }
         return false;
-    }
-
-    public WebElement getHomeTabElement()
-    {
-        return homeTab;
-    }
-
-    public WebElement getRegistrerLinkElement()
-    {
-        return registrerLink;
-    }
-
-    public WebElement getMyAdsProfileTabElement()
-    {
-        return myAdsProfileTab;
-    }
-
-    public WebElement getPostAnAdTabElement()
-    {
-        return postAnAdTab;
-    }
-
-    public WebElement getLoginLinkElement()
-    {
-        return loginLink;
-    }
-
-    public WebElement getLogoutLinkElement()
-    {
-        return logoutLink;
-    }
-
-    public WebElement getMemberNameElement()
-    {
-        return memberName;
     }
 
     public boolean isUserLogedIn(String userName){

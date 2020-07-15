@@ -42,66 +42,6 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getLoginTitlePageElement()
-    {
-        return loginTitlePage;
-    }
-
-    public WebElement getUsernameElement()
-    {
-        return username;
-    }
-
-    public WebElement getPasswordElement()
-    {
-        return password;
-    }
-
-    public WebElement getLoginButtonElement()
-    {
-        return loginButton;
-    }
-
-    public WebElement getInvalidLoginMessageElement()
-    {
-        return notSuccessLoginMessage;
-    }
-
-    public WebElement getRegistrerLinkElement()
-    {
-        return registrerLink;
-    }
-
-    public WebElement getHomeTabElement()
-    {
-        return homeTab;
-    }
-
-    public WebElement getMyAdsProfileTabElement()
-    {
-        return myAdsProfileTab;
-    }
-
-    public WebElement getPostAnAdTabElement()
-    {
-        return postAnAdTab;
-    }
-
-    public WebElement getLoginLinkElement()
-    {
-        return loginLink;
-    }
-
-    public WebElement getLogoutLinkElement()
-    {
-        return logoutLink;
-    }
-
-    public WebElement getMemberNameElement()
-    {
-        return memberName;
-    }
-
     public void clearElementsLoginPage(){
         clearElemnt(getUsernameElement());
         clearElemnt(getPasswordElement());
@@ -129,18 +69,6 @@ public class LoginPage extends BasePage {
                 isLoad=true;
         }
         return isLoad;
-    }
-
-    public void goToHomePage(){
-        clickOnElemnt(getHomeTabElement());
-    }
-
-    public void goToPostAnAd(){
-        clickOnElemnt(getPostAnAdTabElement());
-    }
-
-    public void goToMyAdsProfile(){
-        clickOnElemnt(getMyAdsProfileTabElement());
     }
 
     public HomePage logIn(String userName, String password){

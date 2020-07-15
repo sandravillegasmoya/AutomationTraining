@@ -55,14 +55,12 @@ public class MyAdsProfileTest extends BaseTest{
 
     @Test
     public void testVerifyMyAdsProfileUserNotLogged() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         homePage.navigation.goToMyAdsProfile();
         assertTrue(loginPage.isElementDisplayed(loginPage.getLoginTitlePageElement()));
     }
 
     @Test
     public void testVerifyMyAdsProfileUserAlreadyLogged() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         homePage.navigation.goToPostAnAd();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");

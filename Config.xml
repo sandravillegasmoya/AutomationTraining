@@ -3,34 +3,34 @@
 <suite name="YourSuiteName">
 
 
-    <test name="stage2">
-        <classes>
-            <class name="stage2.RegisterTest" />
-        </classes>
-    </test>
+<!--    <test name="stage2">-->
+<!--        <classes>-->
+<!--            <class name="stage2.RegisterTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stage3">
-        <classes>
-            <class name="stage3.LoginTest" />
-            <class name="stage3.RegisterTest" />
-        </classes>
-    </test>
+<!--    <test name="Stage3">-->
+<!--        <classes>-->
+<!--            <class name="stage3.LoginTest" />-->
+<!--            <class name="stage3.RegisterTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stage4">
-        <classes>
-            <class name="stage4.LoginTest" />
-            <class name="stage4.RegisterTest" />
-        </classes>
-    </test>
+<!--    <test name="Stage4">-->
+<!--        <classes>-->
+<!--            <class name="stage4.LoginTest" />-->
+<!--            <class name="stage4.RegisterTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <test name="Stage5">
-        <parameter name="browserType" value="firefox"/>
-        <parameter name="executionType" value="remote"/>
-        <classes>
-            <class name="stage5.LoginTest" />
-            <class name="stage5.RegisterTest" />
-        </classes>
-    </test>
+<!--    <test name="Stage5">-->
+<!--        <parameter name="browserType" value="firefox"/>-->
+<!--        <parameter name="executionType" value="remote"/>-->
+<!--        <classes>-->
+<!--            <class name="stage5.LoginTest" />-->
+<!--            <class name="stage5.RegisterTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
     <test name="Stage6">
         <parameter name="browserType" value="chrome"/>

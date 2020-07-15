@@ -55,14 +55,12 @@ public class LoginTest {
 
     @Test
     public void testVerifyLoginPageIsDisplayed() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         loginPage.clickOnElement(loginPage.getLoginLink());
         assertTrue(loginPage.isElementPresent(loginPage.getLoginTitlePage()));
     }
 
     @Test
     public void testVerifyLoginValidCredentials() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         loginPage.clickOnElement(loginPage.getLoginLink());
         loginPage.clearElementsLoginPage();
         loginPage.typeOnElement(loginPage.getUsername(),"svillegas1" );
@@ -73,7 +71,6 @@ public class LoginTest {
 
     @Test
     public void testVerifyLoginInvalidCredentials() throws Exception {
-        driver.get("http://qa-trainingw7:86/");
         loginPage.clickOnElement(loginPage.getLoginLink());
         loginPage.clearElementsLoginPage();
         loginPage.clearElementsLoginPage();

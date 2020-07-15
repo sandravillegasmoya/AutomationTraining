@@ -138,6 +138,7 @@ public class RegisterPage extends BasePage {
         return findElement(PasswordsDoNotMatchMessage);
     }
 
+
     public void clearElementsRegisterPage(){
         clearElement(getConfirmPasswordField());
         clearElement(getEmailField());
