@@ -11,22 +11,12 @@ public class RegisterPage extends BasePage {
 
     @FindBy(id = "ctl00_LoginView_LoginLink")
     WebElement loginLink;
-    @FindBy(id = "ctl00_LoginView_MemberLoginStatus")
-    WebElement logoutLink;
-    @FindBy(id = "ctl00_LoginView_RegisterLink")
-    WebElement registrerLink;
-    @FindBy(id = "ctl00_TopMenuRepeater_ctl01_MenuLink")
-    WebElement browseAllCategoriesLink;
     @FindBy(id = "ctl00_TopMenuRepeater_ctl00_MenuLink")
     WebElement homeTab;
     @FindBy(id = "ctl00_TopMenuRepeater_ctl02_MenuLink")
     WebElement myAdsProfileTab;
     @FindBy(id = "ctl00_TopMenuRepeater_ctl01_MenuLink")
     WebElement postAnAdTab;
-    @FindBy(id = "ctl00_LoginView_MemberName")
-    WebElement memberName;
-    @FindBy(xpath="//h2[contains(.,'Register')]")
-    WebElement registerTitle;
     @FindBy(id="ctl00_Main_CreateUserWizardControl_CreateUserStepContainer_FirstName")
     WebElement firsNameField;
     @FindBy(id="ctl00_Main_CreateUserWizardControl_CreateUserStepContainer_LastName")
@@ -52,64 +42,67 @@ public class RegisterPage extends BasePage {
     }
 
     public void clearElementsRegisterPage(){
-        clearElemnt(getConfirmPasswordFieldElement());
-        clearElemnt(getEmailFieldElement());
-        clearElemnt(getFirsNameFieldElement());
-        clearElemnt(getLastNameFieldElement());
-        clearElemnt(getSecurityQuestionFieldElement());
-        clearElemnt(getSecurityAnswerFieldElement());
-        clearElemnt(getUserNameFieldElement());
-        clearElemnt(getPasswordFieldElement());
+        clearElement(confirmPasswordField);
+        clearElement(emailField);
+        clearElement(firsNameField);
+        clearElement(lastNameField);
+        clearElement(securityQuestionField);
+        clearElement(securityAnswerField);
+        clearElement(userNameField);
+        clearElement(passwordField);
     }
+
+    public void fillRegisterForm(String firstName,
+                                 String lastName,
+                                 String email,
+                                 String userName,
+                                 String password,
+                                 String confirmPassword,
+                                 String securityQuestion,
+                                 String securityAnswer){
+
+        typeOnElement(firsNameField,firstName);
+        typeOnElement(lastNameField,lastName);
+        typeOnElement(emailField,email);
+        typeOnElement(userNameField,userName);
+        typeOnElement(passwordField,password);
+        typeOnElement(confirmPasswordField,confirmPassword);
+        typeOnElement(securityQuestionField,securityQuestion);
+        typeOnElement(securityAnswerField,securityAnswer);
+
+    }
+
+    public void gotoNextStep(){clickOnElement(stepNextButton);}
 
     public boolean verifyErrorMessage(String message){
         By messageElement = By.xpath("//span[contains(.,'"+message+"' )]");
-
-        if(findElement(messageElement).isDisplayed()) {
-            return true;
-        }
-        return false;
+        return(findElement(messageElement).isDisplayed());
     }
 
-    public boolean isUserLogedIn(String userName){
-
-        if(isElementDisplayed(getMemberNameElement())){
-            if(userName.equals(getTextFromElement(getMemberNameElement()))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public boolean verifyLoads(String userName){
-
-        return isElementDisplayed(getHomeTabElement()) &&
-                isElementDisplayed(getPostAnAdTabElement()) &&
-                isElementDisplayed(getMyAdsProfileTabElement()) &&
-                isElementDisplayed(getFirsNameFieldElement()) &&
-                isElementDisplayed(getLastNameFieldElement()) &&
-                isElementDisplayed(getEmailFieldElement()) &&
-                isElementDisplayed(getPasswordFieldElement()) &&
-                isElementDisplayed(getConfirmPasswordFieldElement()) &&
-                isElementDisplayed(getSecurityAnswerFieldElement()) &&
-                isElementDisplayed(getSecurityAnswerFieldElement()) &&
-                isElementDisplayed(getStepNextButtonElement());
-
+    public boolean verifyLoads(){
+        return(isElementDisplayed(firsNameField) &&
+                isElementDisplayed(lastNameField) &&
+                isElementDisplayed(emailField) &&
+                isElementDisplayed(passwordField) &&
+                isElementDisplayed(confirmPasswordField) &&
+                isElementDisplayed(securityAnswerField) &&
+                isElementDisplayed(securityQuestionField) &&
+                isElementDisplayed(stepNextButton));
     }
 
     public void goToHomePage(){
-        clickOnElemnt(getHomeTabElement());
+        clickOnElement(homeTab);
     }
 
     public void goToPostAnAd(){
-        clickOnElemnt(getPostAnAdTabElement());
+        clickOnElement(postAnAdTab);
     }
 
     public void goToMyAdsProfile(){
-        clickOnElemnt(getMyAdsProfileTabElement());
+        clickOnElement(myAdsProfileTab);
     }
 
-    public void goToRegister(){ clickOnElemnt(getRegistrerLinkElement());}
-
+    public void goToLogin(){
+        clickOnElement(loginLink);
+    }
 }

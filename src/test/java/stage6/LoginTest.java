@@ -1,7 +1,6 @@
 package stage6;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import pages.stage6.HomePage;
 import pages.stage6.LoginPage;
@@ -16,14 +15,14 @@ public class LoginTest extends BaseTest {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     private LoginPage loginPage ;
-    private WebElement buttonLogin;
+    private HomePage homePage;
 
     @BeforeMethod (alwaysRun = true)
     @Parameters({"browserType","executionType"})
     public void setUp(String browserType, String executionType) throws Exception {
         driver = createDriver(browserType, executionType);
         driver.get("http://qa-trainingw7:86/");
-        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -54,13 +53,14 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testVerifyLoginPageIsDisplayed() throws Exception {
-        loginPage.goToLogin();
-        assertTrue(loginPage.isElementPresent(loginPage.getLoginTitlePageElement()));
+        driver.get("http://qa-trainingw7:86/");
+        loginPage = homePage.goToLogin();
+        assertTrue(loginPage.verifyLoads());
     }
 
     @Test
     public void testVerifyLoginValidCredentials() throws Exception {
-        loginPage.goToLogin();
+        loginPage = homePage.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");
         assertTrue(loginPage.isUserLogedIn("svillegas1"));
@@ -68,10 +68,10 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testVerifyLoginInvalidCredentials() throws Exception {
-        loginPage.goToLogin();
+        loginPage= homePage.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","invalidPass");
-        assertTrue(loginPage.verifyErrorMessage("Your login attempt was not successful. Please try again."));
+        assertTrue(loginPage.verifyMessage("Your login attempt was not successful. Please try again."));
     }
 
 }
