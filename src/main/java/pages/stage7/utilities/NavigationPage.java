@@ -30,6 +30,7 @@ public class NavigationPage{
     private MyAdsProfilePage myAdsProfilePage;
     private PostAnAdPage postAnAdPage;
     private RegisterPage registerPage;
+    private BrowseAllCategoriesPage browseAllCategoriesPage;
 
     public WebDriver driver;
 
@@ -38,80 +39,39 @@ public class NavigationPage{
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getRegistrerLinkElement()
-    {
-        return registerLink;
-    }
-
-    public WebElement getLoginLinkElement()
-    {
-        return loginLink;
-    }
-
-    public WebElement getLogoutLinkElement()
-    {
-        return logoutLink;
-    }
-
-    public WebElement getBrowseAllCategoriesLinkElement()
-    {
-        return browseAllCategoriesLink;
-    }
-
-    public WebElement getHomeTabElement()
-    {
-        return homeTab;
-    }
-
-    public WebElement getMyAdsProfileTabElement()
-    {
-        return myAdsProfileTab;
-    }
-
-    public WebElement getPostAnAdTabElement()
-    {
-        return postAnAdTab;
-    }
-
     public HomePage goToHomePage(){
-        homePage = new HomePage(driver);
-        getHomeTabElement().click();
-        return homePage;
+        homeTab.click();
+        return homePage = new HomePage(driver);
     }
 
     public PostAnAdPage goToPostAnAd(){
-        postAnAdPage = new PostAnAdPage(driver);
-        getPostAnAdTabElement().click();
-        return postAnAdPage;
+        postAnAdTab.click();
+        return  postAnAdPage = new PostAnAdPage(driver);
     }
 
     public MyAdsProfilePage goToMyAdsProfile(){
-        myAdsProfilePage = new MyAdsProfilePage(driver);
-        getMyAdsProfileTabElement().click();
-        return myAdsProfilePage;
+        myAdsProfileTab.click();
+        return myAdsProfilePage = new MyAdsProfilePage(driver);
     }
 
     public LoginPage goToLogin(){
-        loginPage = new LoginPage(driver);
-        getLoginLinkElement().click();
-        return loginPage;
+        loginLink.click();
+        return loginPage = new LoginPage(driver);
     }
 
     public RegisterPage goToRegister(){
-        registerPage = new RegisterPage(driver);
-        getRegistrerLinkElement().click();
-        return registerPage;
+        registerLink.click();
+        return registerPage = new RegisterPage(driver);
     }
 
-    public WebElement getMemberNameElement()
-    {
-        return memberName;
+    public BrowseAllCategoriesPage goToBrowseAllCategoriesPage(){
+        browseAllCategoriesLink.click();
+        return browseAllCategoriesPage = new BrowseAllCategoriesPage(driver);
     }
 
-    public boolean isUserLogedIn(String userName){
-
-        if(getMemberNameElement().isDisplayed()){
-            if(userName.equals(getMemberNameElement().getText())) {
+    public boolean isUserLogIn(String userName){
+        if(memberName.isDisplayed()){
+            if(userName.equals(memberName.getText())) {
                 return true;
             }
         }

@@ -34,53 +34,10 @@ public class MyAdsProfilePage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getSearchField()
-    {
-        return searchField;
+    public boolean verifyLoads(){
+        return(isElementDisplayed(categoryDropDown)&&
+                isElementDisplayed(searchButton) &&
+                isElementDisplayed(searchField));
     }
 
-    public WebElement getCategoryDropDown()
-    {
-        return categoryDropDown;
-    }
-
-    public WebElement getSearchButton()
-    {
-        return searchButton;
-    }
-
-    public WebElement getAdvancedSearchLink()
-    {
-        return advancedSearchLink;
-    }
-
-    public WebElement getCurrentAdsButton()
-    {
-        return currentAdsButton;
-    }
-
-    public WebElement getInactiveAdsButton()
-    {
-        return inactiveAdsButton;
-    }
-
-    public WebElement getSavedAdsButton()
-    {
-        return savedAdsButton;
-    }
-
-    public WebElement getActivationAdsButton()
-    {
-        return activationAdsButton;
-    }
-
-    public WebElement getProfileLink()
-    {
-        return profileLink;
-    }
-
-    public WebElement getMyCurrentAdsTitle()
-    {
-        return myCurrentAdsTitle;
-    }
 }

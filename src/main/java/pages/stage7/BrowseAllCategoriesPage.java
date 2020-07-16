@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.stage7.utilities.BasePage;
 
-public class BrowseCategoriesPage extends BasePage {
+public class BrowseAllCategoriesPage extends BasePage {
 
     @FindBy(id="ctl00_Main_SearchTermTextBox")
     WebElement searchTermTextBox;
@@ -18,28 +18,14 @@ public class BrowseCategoriesPage extends BasePage {
     @FindBy(id="ctl00_Main_SubcategoriesList")
     WebElement subcategoriesList;
 
-    public BrowseCategoriesPage(WebDriver otherDriver) {
+    public BrowseAllCategoriesPage(WebDriver otherDriver) {
         super(otherDriver);
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getSearchTermTextBox()
-    {
-        return searchTermTextBox;
-    }
+    public boolean verifyCategorySelected(String category){
 
-    public WebElement getCategoryDropDown()
-    {
-        return categoryDropDown;
-    }
-
-    public WebElement getSearchButton()    {
-        return searchButton;
-    }
-
-    public WebElement getSubcategoriesList()
-    {
-        return subcategoriesList;
+        return getOptionSelected(categoryDropDown).equals(category);
     }
 
 }

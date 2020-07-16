@@ -32,26 +32,26 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-    <test name="Stage6">
-        <parameter name="browserType" value="chrome"/>
-        <parameter name="executionType" value="local"/>
-        <classes>
-            <class name="stage6.LoginTest" />
-            <class name="stage6.RegisterTest" />
-        </classes>
-    </test>
-
-<!--    <test name="Stage7">-->
+<!--    <test name="Stage6">-->
 <!--        <parameter name="browserType" value="chrome"/>-->
 <!--        <parameter name="executionType" value="local"/>-->
 <!--        <classes>-->
+<!--            <class name="stage6.LoginTest" />-->
+<!--            <class name="stage6.RegisterTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
+    <test name="Stage7">
+        <parameter name="browserType" value="chrome"/>
+        <parameter name="executionType" value="local"/>
+        <classes>
 <!--            <class name="stage7.HomeTest" />-->
 <!--            <class name="stage7.RegisterTest" />-->
 <!--            <class name="stage7.LoginTest" />-->
-<!--            <class name="stage7.BrowseCategoriesTest" />-->
+            <class name="stage7.BrowseCategoriesTest" />
 <!--            <class name="stage7.PostAnAdTest" />-->
 <!--            <class name="stage7.MyAdsProfileTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
+        </classes>
+    </test>
 
 </suite>

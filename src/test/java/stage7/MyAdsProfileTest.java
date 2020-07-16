@@ -23,7 +23,6 @@ public class MyAdsProfileTest extends BaseTest{
         driver = createDriver(browserType, executionType);
         driver.get("http://qa-trainingw7:86/");
         homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
 
     }
 
@@ -55,17 +54,17 @@ public class MyAdsProfileTest extends BaseTest{
 
     @Test
     public void testVerifyMyAdsProfileUserNotLogged() throws Exception {
-        homePage.navigation.goToMyAdsProfile();
-        assertTrue(loginPage.isElementDisplayed(loginPage.getLoginTitlePageElement()));
+        myAdsProfilePage = homePage.navigation.goToMyAdsProfile();
+        assertTrue(!myAdsProfilePage.verifyLoads());
     }
 
     @Test
     public void testVerifyMyAdsProfileUserAlreadyLogged() throws Exception {
-        homePage.navigation.goToPostAnAd();
+        loginPage = homePage.navigation.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");
         myAdsProfilePage = homePage.navigation.goToMyAdsProfile();
-        assertTrue(myAdsProfilePage.isElementDisplayed(myAdsProfilePage.getMyCurrentAdsTitle()));
+        assertTrue(myAdsProfilePage.verifyLoads());
     }
 
 }

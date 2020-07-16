@@ -23,7 +23,6 @@ public class PostAnAdTest extends BaseTest{
         driver = createDriver(browserType, executionType);
         driver.get("http://qa-trainingw7:86/");
         homePage = new HomePage(driver);
-        loginPage = new LoginPage(driver);
     }
 
     @AfterMethod(alwaysRun = true)
@@ -53,18 +52,18 @@ public class PostAnAdTest extends BaseTest{
     }
 
     @Test
-    public void testVerifyPostanAdTabUserNotLogged() throws Exception {
-        homePage.navigation.goToPostAnAd();
-        assertTrue(loginPage.isElementDisplayed(loginPage.getLoginTitlePageElement()));
+    public void testVerifyPostAnAdTabUserNotLogged() throws Exception {
+        postAnAdPage = homePage.navigation.goToPostAnAd();
+        assertTrue(!postAnAdPage.verifyLoads());
     }
 
     @Test
-    public void testVerifyPostanAdTabUserAlreadyLogged() throws Exception {
-        homePage.navigation.goToPostAnAd();
+    public void testVerifyPostAnAdTabUserAlreadyLogged() throws Exception {
+        loginPage = homePage.navigation.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");
-        postAnAdPage = homePage.navigation.goToPostAnAd();
-        assertTrue(postAnAdPage.isElementDisplayed(postAnAdPage.getPostAnAdPageTitle()));
+        postAnAdPage = loginPage.navigation.goToPostAnAd();
+        assertTrue(postAnAdPage.verifyLoads());
     }
 
 }

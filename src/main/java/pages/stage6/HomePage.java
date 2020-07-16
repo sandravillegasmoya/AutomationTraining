@@ -27,12 +27,11 @@ public class HomePage extends BasePage {
     @FindBy(id = "ctl00_LoginView_MemberName")
     WebElement memberName;
 
+    @FindBy (xpath = "//td//h4")
+    private List<WebElement> categoriesList;
 
     RegisterPage registerPage;
     LoginPage loginPage;
-
-    @FindBy (xpath = "//td//h4")
-    private List<WebElement> categoriesList;
 
     public HomePage(WebDriver otherDriver) {
         super(otherDriver);
@@ -49,7 +48,7 @@ public class HomePage extends BasePage {
         return displayed;
     }
 
-    public boolean isUserLogedIn(String userName){
+    public boolean isUserLogIn(String userName){
 
         if(isElementDisplayed(memberName)){
             return(userName.equals(getTextFromElement(memberName)));

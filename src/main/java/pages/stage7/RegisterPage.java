@@ -35,73 +35,53 @@ public class RegisterPage extends BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public WebElement getRegisterTitleElement()
-    {
-        return registerTitle;
-    }
-
-    public WebElement getFirsNameFieldElement()
-    {
-        return firsNameField;
-    }
-
-    public WebElement getLastNameFieldElement()
-    {
-        return lastNameField;
-    }
-
-    public WebElement getEmailFieldElement()
-    {
-        return emailField;
-    }
-
-    public WebElement getUserNameFieldElement()
-    {
-        return userNameField;
-    }
-
-    public WebElement getConfirmPasswordFieldElement()
-    {
-        return confirmPasswordField;
-    }
-
-    public WebElement getSecurityQuestionFieldElement()
-    {
-        return securityQuestionField;
-    }
-
-    public WebElement getSecurityAnswerFieldElement()
-    {
-        return securityAnswerField;
-    }
-
-    public WebElement getPasswordFieldElement()
-    {
-        return passwordField;
-    }
-
-    public WebElement getStepNextButtonElement()
-    {
-        return stepNextButton;
-    }
 
     public void clearElementsRegisterPage(){
-        clearElemnt(getConfirmPasswordFieldElement());
-        clearElemnt(getEmailFieldElement());
-        clearElemnt(getFirsNameFieldElement());
-        clearElemnt(getLastNameFieldElement());
-        clearElemnt(getSecurityQuestionFieldElement());
-        clearElemnt(getSecurityAnswerFieldElement());
-        clearElemnt(getUserNameFieldElement());
-        clearElemnt(getPasswordFieldElement());
+        clearElement(confirmPasswordField);
+        clearElement(emailField);
+        clearElement(firsNameField);
+        clearElement(lastNameField);
+        clearElement(securityQuestionField);
+        clearElement(securityAnswerField);
+        clearElement(userNameField);
+        clearElement(passwordField);
     }
+
+    public void fillRegisterForm(String firstName,
+                                 String lastName,
+                                 String email,
+                                 String userName,
+                                 String password,
+                                 String confirmPassword,
+                                 String securityQuestion,
+                                 String securityAnswer){
+
+        typeOnElement(firsNameField,firstName);
+        typeOnElement(lastNameField,lastName);
+        typeOnElement(emailField,email);
+        typeOnElement(userNameField,userName);
+        typeOnElement(passwordField,password);
+        typeOnElement(confirmPasswordField,confirmPassword);
+        typeOnElement(securityQuestionField,securityQuestion);
+        typeOnElement(securityAnswerField,securityAnswer);
+
+    }
+
+    public void gotoNextStep(){clickOnElement(stepNextButton);}
 
     public boolean verifyErrorMessage(String message){
         By messageElement = By.xpath("//span[contains(.,'"+message+"' )]");
+        return(findElement(messageElement).isDisplayed());
+    }
 
-        if(findElement(messageElement).isDisplayed()) {
-            return true;
-        }
-        return false;
+    public boolean verifyLoads(){
+        return(isElementDisplayed(firsNameField) &&
+                isElementDisplayed(lastNameField) &&
+                isElementDisplayed(emailField) &&
+                isElementDisplayed(passwordField) &&
+                isElementDisplayed(confirmPasswordField) &&
+                isElementDisplayed(securityAnswerField) &&
+                isElementDisplayed(securityQuestionField) &&
+                isElementDisplayed(stepNextButton));
     }
 }
