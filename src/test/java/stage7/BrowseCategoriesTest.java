@@ -53,19 +53,19 @@ public class BrowseCategoriesTest extends BaseTest{
     @Test
     public void testSearchViewAntiquesCollectibles() throws Exception {
         browseCategoriesPage = homePage.selectCategory("Antiques & Collectibles");
-        assertTrue(browseCategoriesPage.verifyCategorySelected("Antiques & Collectibles"));
+        assertTrue(browseCategoriesPage.verifyCategorySelected(" Antiques & Collectibles"));
     }
 
     @Test
     public void testSearchViewAuto() throws Exception {
         browseCategoriesPage = homePage.selectCategory("Auto");
-        assertTrue(browseCategoriesPage.verifyCategorySelected("Auto"));
+        assertTrue(browseCategoriesPage.verifyCategorySelected(" Auto"));
     }
 
     @Test
     public void testSearchViewArtsCrafts() throws Exception {
         browseCategoriesPage = homePage.selectCategory("Auto");
-        assertTrue(browseCategoriesPage.verifyCategorySelected("Auto"));
+        assertTrue(browseCategoriesPage.verifyCategorySelected(" Auto"));
     }
 
 }

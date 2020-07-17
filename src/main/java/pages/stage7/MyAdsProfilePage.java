@@ -35,9 +35,9 @@ public class MyAdsProfilePage extends BasePage {
     }
 
     public boolean verifyLoads(){
-        return(isElementDisplayed(categoryDropDown)&&
-                isElementDisplayed(searchButton) &&
-                isElementDisplayed(searchField));
+        return(isElementPresent(categoryDropDown)&&
+                isElementPresent(searchButton) &&
+                isElementPresent(searchField));
     }
 
 }

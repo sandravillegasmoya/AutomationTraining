@@ -49,11 +49,11 @@ public class BaseTest {
         try {
             if(browserType.equals("chrome")){
                 System.out.println("Creating Remote Chrome Driver");
-                driver = new RemoteWebDriver(new URL("http://10.230.188.13:12163/wd/hub"), new ChromeOptions());
+                driver = new RemoteWebDriver(new URL("http://10.230.188.19:48795/wd/hub"), new ChromeOptions());
 
             }else if (browserType.equals("firefox")) {
                 System.out.println("Creating Remote Firefox Driver");
-                driver = new RemoteWebDriver(new URL("http://10.230.188.13:5521/wd/hub"), new FirefoxOptions());
+                driver = new RemoteWebDriver(new URL("http://10.230.188.19:18035/wd/hub"), new FirefoxOptions());
 
             }
         }catch (NoSuchElementException e){
@@ -69,10 +69,10 @@ public class BaseTest {
     /*Create remote driver hub and nodes https://www.guru99.com/introduction-to-selenium-grid.html
     ****use ubication of the standalone jar
     * C:\Automation>
-    *java -jar selenium-server-standalone-3.141.59.jar -port 4445 -role hub
+    *java -jar selenium-server-standalone-3.141.59.jar -port 4446 -role hub
     ****verify the hub ip address and change
-    *java -Dwebdriver.chrome.driver=C:\Automation\Drivers\chrome\chromedriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -hub http://10.230.188.13:4445/grid/register/
-    *java -Dwebdriver.gecko.driver=C:\Automation\Drivers\firefox\geckodriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -hub http://10.230.188.13:4445/grid/register/
+    *java -Dwebdriver.chrome.driver=C:\Automation\Drivers\chrome\chromedriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -hub http://10.230.188.19:4446/grid/register/
+    *java -Dwebdriver.gecko.driver=C:\Automation\Drivers\firefox\geckodriver.exe -jar selenium-server-standalone-3.141.59.jar -role node -hub http://10.230.188.19:4446/grid/register/
     */
 
 }

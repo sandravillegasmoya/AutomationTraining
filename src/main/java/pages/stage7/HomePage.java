@@ -50,12 +50,15 @@ public class HomePage extends BasePage {
     }
 
     public BrowseAllCategoriesPage selectCategory(String categorySelected){
+
         for(WebElement category : categoriesList){
+            System.out.print(category);
             if(getTextFromElement(category).equals(categorySelected)){
                 category.click();
+                return  browseAllCategoriesPage =  new BrowseAllCategoriesPage(driver);
             }
         }
-        return browseAllCategoriesPage =  new BrowseAllCategoriesPage(driver);
+        return null;
     }
 
 }

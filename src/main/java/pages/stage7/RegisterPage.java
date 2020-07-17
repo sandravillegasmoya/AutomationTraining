@@ -69,7 +69,7 @@ public class RegisterPage extends BasePage {
 
     public void gotoNextStep(){clickOnElement(stepNextButton);}
 
-    public boolean verifyErrorMessage(String message){
+    public boolean verifyMessageIsPresent(String message){
         By messageElement = By.xpath("//span[contains(.,'"+message+"' )]");
         return(findElement(messageElement).isDisplayed());
     }

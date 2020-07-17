@@ -24,7 +24,6 @@ public class BrowseAllCategoriesPage extends BasePage {
     }
 
     public boolean verifyCategorySelected(String category){
-
         return getOptionSelected(categoryDropDown).equals(category);
     }
 

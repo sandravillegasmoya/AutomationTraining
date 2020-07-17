@@ -59,14 +59,14 @@ public class RegisterTest extends BaseTest {
         registerPage = homePage.navigation.goToRegister();
         registerPage.clearElementsRegisterPage();
         registerPage.gotoNextStep();
-        assertTrue(registerPage.verifyErrorMessage("First name is required."));
-        assertTrue(registerPage.verifyErrorMessage("Last name is required."));
-        assertTrue(registerPage.verifyErrorMessage("Email is required."));
-        assertTrue(registerPage.verifyErrorMessage("User name is required."));
-        assertTrue(registerPage.verifyErrorMessage("Password is required."));
-        assertTrue(registerPage.verifyErrorMessage("Confirm password is required."));
-        assertTrue(registerPage.verifyErrorMessage("Security question is required."));
-        assertTrue(registerPage.verifyErrorMessage("Security answer is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("First name is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Last name is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Email is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("User name is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Password is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Confirm password is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Security question is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Security answer is required."));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class RegisterTest extends BaseTest {
                 "test",
                 "test");
         registerPage.gotoNextStep();
-        assertTrue(registerPage.verifyErrorMessage("User name already exists. Please enter a different user name."));
+        assertTrue(registerPage.verifyMessageIsPresent("User name already exists. Please enter a different user name."));
     }
 
     @Test
@@ -98,7 +98,7 @@ public class RegisterTest extends BaseTest {
                 "test",
                 "test");
         registerPage.gotoNextStep();
-        assertTrue(registerPage.verifyErrorMessage("The password and confirmation password must match."));
+        assertTrue(registerPage.verifyMessageIsPresent("The password and confirmation password must match."));
     }
 
 }
