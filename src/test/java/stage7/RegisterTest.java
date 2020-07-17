@@ -47,58 +47,58 @@ public class RegisterTest extends BaseTest {
         System.out.println("Completing execution class: RegistrerTest");
     }
 
-
     @Test
     public void testVerifyRegistrerLink() throws Exception {
+        driver.get("http://qa-trainingw7:86/");
         registerPage = homePage.navigation.goToRegister();
-       assertTrue(registerPage.isElementPresent(registerPage.getRegisterTitleElement()));
+        assertTrue(registerPage.verifyLoads());
     }
 
     @Test
     public void testValidateMandatoryMessages() throws Exception {
         registerPage = homePage.navigation.goToRegister();
         registerPage.clearElementsRegisterPage();
-        registerPage.clickOnElemnt(registerPage.getStepNextButtonElement());
-        assertTrue(registerPage.verifyErrorMessage("First name is required."));
-        assertTrue(registerPage.verifyErrorMessage("Last name is required."));
-        assertTrue(registerPage.verifyErrorMessage("Email is required."));
-        assertTrue(registerPage.verifyErrorMessage("User name is required."));
-        assertTrue(registerPage.verifyErrorMessage("Password is required."));
-        assertTrue(registerPage.verifyErrorMessage("Confirm password is required."));
-        assertTrue(registerPage.verifyErrorMessage("Security question is required."));
-        assertTrue(registerPage.verifyErrorMessage("Security answer is required."));
+        registerPage.gotoNextStep();
+        assertTrue(registerPage.verifyMessageIsPresent("First name is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Last name is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Email is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("User name is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Password is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Confirm password is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Security question is required."));
+        assertTrue(registerPage.verifyMessageIsPresent("Security answer is required."));
     }
 
     @Test
     public void testVerifyUserNameAlreadyTaken() throws Exception {
         registerPage = homePage.navigation.goToRegister();
         registerPage.clearElementsRegisterPage();
-        registerPage.typeOnElement(registerPage.getFirsNameFieldElement(),"Sandra");
-        registerPage.typeOnElement(registerPage.getLastNameFieldElement(),"Villegas");
-        registerPage.typeOnElement(registerPage.getEmailFieldElement(),"test@avantica.com");
-        registerPage.typeOnElement(registerPage.getUserNameFieldElement(),"svillegas");
-        registerPage.typeOnElement(registerPage.getPasswordFieldElement(),"!123Test");
-        registerPage.typeOnElement(registerPage.getConfirmPasswordFieldElement(),"!123Test");
-        registerPage.typeOnElement(registerPage.getSecurityQuestionFieldElement(),"test");
-        registerPage.typeOnElement(registerPage.getSecurityAnswerFieldElement(),"test");
-        registerPage.clickOnElemnt(registerPage.getStepNextButtonElement());
-       assertTrue(registerPage.verifyErrorMessage("User name already exists. Please enter a different user name."));
+        registerPage.fillRegisterForm("Sandra",
+                "Villegas",
+                "test@avantica.com",
+                "svillegas",
+                "!123Test",
+                "!123Test",
+                "test",
+                "test");
+        registerPage.gotoNextStep();
+        assertTrue(registerPage.verifyMessageIsPresent("User name already exists. Please enter a different user name."));
     }
 
     @Test
     public void testVerifyMismatchedPasswords() throws Exception {
         registerPage = homePage.navigation.goToRegister();
         registerPage.clearElementsRegisterPage();
-        registerPage.typeOnElement(registerPage.getFirsNameFieldElement(),"Sandra");
-        registerPage.typeOnElement(registerPage.getLastNameFieldElement(),"Villegas");
-        registerPage.typeOnElement(registerPage.getEmailFieldElement(),"test@avantica.com");
-        registerPage.typeOnElement(registerPage.getUserNameFieldElement(),"svillegas");
-        registerPage.typeOnElement(registerPage.getPasswordFieldElement(),"!123Test");
-        registerPage.typeOnElement(registerPage.getConfirmPasswordFieldElement(),"!123Ttst");
-        registerPage.typeOnElement(registerPage.getSecurityQuestionFieldElement(),"test");
-        registerPage.typeOnElement(registerPage.getSecurityAnswerFieldElement(),"test");
-        registerPage.clickOnElemnt(registerPage.getStepNextButtonElement());
-        assertTrue(registerPage.verifyErrorMessage("The password and confirmation password must match."));
-   }
+        registerPage.fillRegisterForm("Sandra",
+                "Villegas",
+                "test@avantica.com",
+                "svillegas",
+                "!123Test",
+                "!123Ttest",
+                "test",
+                "test");
+        registerPage.gotoNextStep();
+        assertTrue(registerPage.verifyMessageIsPresent("The password and confirmation password must match."));
+    }
 
 }

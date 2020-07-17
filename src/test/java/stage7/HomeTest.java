@@ -48,13 +48,13 @@ public class HomeTest extends BaseTest {
 
     @Test
     public void testVerifyHomePageLoadingApp() throws Exception {
-        assertTrue(homePage.verifyLoads(driver, homePage.getBrowseCategoriesTitle()));
+        assertTrue(homePage.verifyLoads());
     }
 
     @Test
     public void testVerifyHomePageNavMenu() throws Exception {
         homePage = homePage.navigation.goToHomePage();
-        assertTrue(homePage.verifyLoads(driver, homePage.getBrowseCategoriesTitle()));
+        assertTrue(homePage.verifyLoads());
 
     }
 

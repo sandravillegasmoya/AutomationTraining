@@ -51,8 +51,9 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void testVerifyLoginPageIsDisplayed() throws Exception {
+        driver.get("http://qa-trainingw7:86/");
         loginPage = homePage.navigation.goToLogin();
-        assertTrue(loginPage.isElementPresent(loginPage.getLoginTitlePageElement()));
+        assertTrue(loginPage.verifyLoads());
     }
 
     @Test
@@ -60,15 +61,15 @@ public class LoginTest extends BaseTest {
         loginPage = homePage.navigation.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","!123Test");
-        assertTrue(homePage.navigation.isUserLogedIn("svillegas1"));
+        assertTrue(loginPage.navigation.isUserLogIn("svillegas1"));
     }
 
     @Test
     public void testVerifyLoginInvalidCredentials() throws Exception {
-        loginPage = homePage.navigation.goToLogin();
+        loginPage= homePage.navigation.goToLogin();
         loginPage.clearElementsLoginPage();
         loginPage.logIn("svillegas1","invalidPass");
-        assertTrue(loginPage.verifyErrorMessage("Your login attempt was not successful. Please try again."));
+        assertTrue(loginPage.verifyMessage("Your login attempt was not successful. Please try again."));
     }
 
 }

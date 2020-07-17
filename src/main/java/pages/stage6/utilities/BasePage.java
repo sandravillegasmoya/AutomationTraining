@@ -23,7 +23,7 @@ public class BasePage {
                 return driver.findElement(by);
             else
                 return null;
-        }catch (NoSuchElementException e) {
+        }catch (Exception e) {
             return null;
         }
     }
@@ -33,7 +33,7 @@ public class BasePage {
             if(waitForElementVisible(element)){
                 element.sendKeys(data);
                 return true;}
-        }catch (NoSuchElementException e) {
+        }catch (Exception e) {
             return false;
         }
         return false;
@@ -44,7 +44,7 @@ public class BasePage {
             if(waitForElementVisible(element)){
                 element.click();
                 return true;}
-        }catch (NoSuchElementException e) {
+        }catch (Exception e) {
             return false;
         }
         return false;
@@ -55,7 +55,7 @@ public class BasePage {
             if(waitForElementVisible(element)){
                 element.clear();
                 return true;}
-        }catch (NoSuchElementException e) {
+        }catch (Exception e) {
             return false;
         }
         return false;
@@ -65,7 +65,7 @@ public class BasePage {
         try{
             if(waitForElementVisible(element)){
                 return element.getText();}
-        }catch (NoSuchElementException e) {
+        }catch (Exception e) {
             return null;
         }
         return null;
@@ -73,28 +73,21 @@ public class BasePage {
 
     public boolean isElementPresent(WebElement element) {
         try {
-            if(element.isEnabled() && element.isDisplayed())
-                return true;
-            else
-                return false;
-        } catch (NoSuchElementException e) {
+            return(element.isEnabled()
+                    && element.isDisplayed());
+        } catch (Exception e) {
             return false;
         }
     }
 
     public boolean isElementDisplayed(WebElement element){
-        boolean isDisplayed=false;
         try{
-            if(waitForElementVisible(element))
-            {
-                isDisplayed = true;
-            }
+           return waitForElementVisible(element);
         }
-        catch (NoSuchElementException e)
+        catch (Exception e)
         {
-            isDisplayed= false;
+            return false;
         }
-        return isDisplayed;
     }
 
     public boolean waitForElementVisible(WebElement element)
@@ -104,7 +97,7 @@ public class BasePage {
             wait.until(ExpectedConditions.visibilityOf(element));
             return true;
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             return false;
         }
     }
@@ -116,7 +109,7 @@ public class BasePage {
             wait.until(ExpectedConditions.presenceOfElementLocated(element));
             return true;
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             return false;
         }
     }
@@ -128,7 +121,7 @@ public class BasePage {
             wait.until(ExpectedConditions.invisibilityOf(element));
             return true;
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             return false;
         }
     }

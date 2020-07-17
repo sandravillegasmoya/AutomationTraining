@@ -2,7 +2,6 @@
 
 <suite name="YourSuiteName">
 
-
 <!--    <test name="stage2">-->
 <!--        <classes>-->
 <!--            <class name="stage2.RegisterTest" />-->
@@ -23,14 +22,14 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-<!--    <test name="Stage5">-->
-<!--        <parameter name="browserType" value="firefox"/>-->
-<!--        <parameter name="executionType" value="remote"/>-->
-<!--        <classes>-->
-<!--            <class name="stage5.LoginTest" />-->
-<!--            <class name="stage5.RegisterTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Stage5">
+        <parameter name="browserType" value="firefox"/>
+        <parameter name="executionType" value="remote"/>
+        <classes>
+            <class name="stage5.LoginTest" />
+            <class name="stage5.RegisterTest" />
+        </classes>
+    </test>
 
     <test name="Stage6">
         <parameter name="browserType" value="chrome"/>
@@ -41,17 +40,17 @@
         </classes>
     </test>
 
-<!--    <test name="Stage7">-->
-<!--        <parameter name="browserType" value="chrome"/>-->
-<!--        <parameter name="executionType" value="local"/>-->
-<!--        <classes>-->
-<!--            <class name="stage7.HomeTest" />-->
-<!--            <class name="stage7.RegisterTest" />-->
-<!--            <class name="stage7.LoginTest" />-->
-<!--            <class name="stage7.BrowseCategoriesTest" />-->
-<!--            <class name="stage7.PostAnAdTest" />-->
-<!--            <class name="stage7.MyAdsProfileTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Stage7">
+        <parameter name="browserType" value="chrome"/>
+        <parameter name="executionType" value="local"/>
+        <classes>
+            <class name="stage7.HomeTest" />
+            <class name="stage7.RegisterTest" />
+            <class name="stage7.LoginTest" />
+            <class name="stage7.BrowseCategoriesTest" />
+            <class name="stage7.PostAnAdTest" />
+            <class name="stage7.MyAdsProfileTest" />
+        </classes>
+    </test>
 
 </suite>

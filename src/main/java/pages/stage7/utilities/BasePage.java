@@ -22,27 +22,76 @@ public class BasePage {
     }
 
     public WebElement findElement(By by){
-        if(waitForElementEnabled(by))
-            return driver.findElement(by);
-        else
+        try{
+            if(waitForElementEnabled(by))
+                return driver.findElement(by);
+            else
+                return null;
+        }catch (Exception e) {
             return null;
+        }
     }
 
-    public void typeOnElement(WebElement element, String data){
-        element.sendKeys(data);
+    public boolean typeOnElement(WebElement element, String data){
+        try{
+            if(waitForElementVisible(element)){
+                element.sendKeys(data);
+                return true;}
+        }catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 
-    public void clickOnElemnt(WebElement element){
-        element.click();
+    public boolean clickOnElement(WebElement element){
+        try{
+            if(waitForElementVisible(element)){
+                element.click();
+                return true;}
+        }catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 
-    public void clearElemnt(WebElement element){
-        element.clear();
+    public boolean clearElement(WebElement element){
+        try{
+            if(waitForElementVisible(element)){
+                element.clear();
+                return true;}
+        }catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 
-    public String getTextFromElement(WebElement element)
-    {
-        return element.getText();
+    public String getTextFromElement(WebElement element){
+        try{
+            if(waitForElementVisible(element)){
+                return element.getText();}
+        }catch (Exception e) {
+            return null;
+        }
+        return null;
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        try {
+            element.isDisplayed();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean isElementDisplayed(WebElement element){
+        try{
+            return waitForElementVisible(element);
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
     public String getOptionSelected(WebElement element){
@@ -54,43 +103,14 @@ public class BasePage {
         return defaultItem;
     }
 
-    public boolean isElementPresent(WebElement element) {
-
-        try {
-            if(element.isEnabled() && element.isDisplayed())
-                return true;
-            else
-                return false;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
-    public boolean isElementDisplayed(WebElement element){
-        boolean isDisplayed=false;
-        try{
-            if(waitForElementVisible(element))
-            {
-                if(element.isDisplayed()) {
-                    isDisplayed = true;
-                }
-            }
-        }
-        catch (NoSuchElementException e)
-        {
-            isDisplayed= false;
-        }
-        return isDisplayed;
-    }
-
     public boolean waitForElementVisible(WebElement element)
     {
         try{
             wait = new WebDriverWait(driver, 5);
             wait.until(ExpectedConditions.visibilityOf(element));
-            return true;
+            return element.isDisplayed();
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             return false;
         }
     }
@@ -102,7 +122,7 @@ public class BasePage {
             wait.until(ExpectedConditions.presenceOfElementLocated(element));
             return true;
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             return false;
         }
     }
@@ -114,27 +134,8 @@ public class BasePage {
             wait.until(ExpectedConditions.invisibilityOf(element));
             return true;
         }
-        catch (NoSuchElementException e){
+        catch (Exception e){
             return false;
         }
-    }
-
-    public boolean verifyLoads(WebDriver driver, WebElement element){
-
-        boolean isLoad =  false;
-
-        try{
-            if (!((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete")) {
-                wait = new WebDriverWait(driver, 5);
-                wait.until(ExpectedConditions.visibilityOf(element));
-            }
-            isLoad = true;
-        }
-        catch (NoSuchElementException e){
-            isLoad =  false;
-        }
-
-        return isLoad;
-
     }
 }
